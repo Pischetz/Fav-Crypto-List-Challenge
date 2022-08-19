@@ -4,7 +4,8 @@ const initialState = {
     cryptocurrenciesList:[],
     TRC20List: [],
     BEP20List: [],
-    ERC20List: []
+    ERC20List: [],
+    selectedList:'currencies'
 }
 
 const cryptoListReducer = createSlice({
@@ -16,12 +17,16 @@ const cryptoListReducer = createSlice({
             state.TRC20List = action.payload.trc20
             state.BEP20List = action.payload.bep20
             state.ERC20List = action.payload.erc20
+        },
+        selectList(state, action){
+            state.selectedList = action.payload
         }
     }
 })
 
 export const {
-    addCryptos
+    addCryptos,
+    selectList
 } = cryptoListReducer.actions
 
 export default cryptoListReducer.reducer
