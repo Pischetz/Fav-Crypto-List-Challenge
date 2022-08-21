@@ -1,7 +1,13 @@
-export default function Card({coin}){
+import Link from "next/link";
+
+export default function Card({coin, chain}){
+    
+
     return(
+        <Link href={`/info${chain}/${coin.ticker}`}>
         <div>
-            {coin.name}
+            {coin.coin}
         </div>
+        </Link>
     )
 }
