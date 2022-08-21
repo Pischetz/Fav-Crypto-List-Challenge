@@ -2,18 +2,30 @@ import { Button, Card, IconButton, CardHeader, CardBody, CardFooter, Typography}
 
 import FavouriteCard from "components/FavouriteCard/FavouriteCard";
 import SearchModal from "components/SearchModal/SearchModal"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AiOutlinePlus } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
+import { setFavourites } from "redux-toolkit/reducers/favourite.slice";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false)
   const favourites = useSelector(store => store.favourites.favourites)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    if(!favourites.length){
+      let savedFavorites = localStorage.getItem('favs')
+
+      if(savedFavorites){
+        savedFavorites = JSON.parse(savedFavorites)
+        dispatch(setFavourites(savedFavorites))
+      }
+    }
+  }, [])
+
   return (
-    <div className="hola">
-      <Card className="max-w-[400px]">
+    <div className="flex">
+      <Card className="w-[400px] m-auto">
       <CardHeader
         variant="gradient"
         color="blue"
@@ -22,7 +34,7 @@ export default function Home() {
       >
         <div className="flex justify-between w-[90%] items-center">
         <Typography variant="h3" color="white">
-          Favourites Cryptos
+          Your Favs!
         </Typography>
         <div>
         <IconButton onClick={() => { setShowModal(!showModal)}} variant='gradient' className="rounded-full h-8 w-8 ">
@@ -31,8 +43,7 @@ export default function Home() {
         </div>
         </div>
       </CardHeader>
-      
-      <CardBody>
+      <CardBody className="md:max-h-[400px] overflow-auto">
       {favourites.length? favourites.map(crypto => <>
         <FavouriteCard crypto={crypto}/>
       </>): null}
