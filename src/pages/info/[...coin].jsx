@@ -14,14 +14,16 @@ import {
     Typography,
     Button,
     Input
-  } from "@material-tailwind/react";
+} from "@material-tailwind/react";
+import { TbArrowBackUp } from "react-icons/tb"
+import Link from "next/link"
 
 export default function Info() {
     const router = useRouter()
     const { coin } = router.query
     const dispatch = useDispatch()
     const cryptoInfo = useSelector(store => store.cryptoInfo.info)
-    const {favourites, currency} = useSelector(store => store.favourites)
+    const { favourites, currency } = useSelector(store => store.favourites)
     const [loading, setLoading] = useState(false)
     const [fav, setFav] = useState(false)
     const [ammount, setAmmount] = useState(0)
@@ -46,11 +48,11 @@ export default function Info() {
     }, [coin])
 
     useEffect(() => {
-        function checkFav(chain){
+        function checkFav(chain) {
             let isFav = favourites.find(crypto => crypto.coin === cryptoInfo.coin && crypto.chain === chain)
-                if (isFav) {
-                    setFav(true)
-                }
+            if (isFav) {
+                setFav(true)
+            }
         }
         if (cryptoInfo.coin) {
             if (coin.length === 2) {
@@ -84,14 +86,14 @@ export default function Info() {
             }
 
         } else {
-            if(fav){
+            if (fav) {
                 dispatch(updateFavourite({
                     coin: cryptoInfo.coin,
                     chain: '',
                     prices: cryptoInfo.prices,
                     ammount: ammount
                 }))
-            }else{
+            } else {
                 dispatch(addFavourite({
                     coin: cryptoInfo.coin,
                     logo: cryptoInfo.logo,
@@ -112,29 +114,36 @@ export default function Info() {
     }
 
     return <div>
-        {loading ? <div className="flex items-center justify-center"><LoadingSpinner /> </div>:
+        {loading ? <div className="flex items-center justify-center"><LoadingSpinner /> </div> :
             cryptoInfo.coin ?
                 <div className="flex items-center justify-center m-auto ">
                     <Card className="w-96 m-auto ">
                         <CardHeader color="cyan" className="relative h-56 m-0 flex">
                             <div className="h-40 aspect-square m-auto">
-                                <img src={cryptoInfo.logo} className='w-full h-full rounded-full'/>
+                                <img src={cryptoInfo.logo} className='w-full h-full rounded-full' />
+                            </div>
+                            <div className="absolute right-4 top-4">
+                                <Link href={'/'}>
+                                    <a href="/">
+                                        <TbArrowBackUp />
+                                    </a>
+                                </Link>
                             </div>
                         </CardHeader>
                         <CardBody className="text-center">
                             <Typography variant="h5" className="mb-2">
-                            {cryptoInfo.coin}
+                                {cryptoInfo.coin}
                             </Typography>
                             <Typography>
-                            {cryptoInfo.prices[currency]? <>{cryptoInfo.prices[currency]} {currency}</> : <>Untracked Price</>}
+                                {cryptoInfo.prices[currency] ? <>{cryptoInfo.prices[currency]} {currency}</> : <>Untracked Price</>}
                             </Typography>
                         </CardBody>
                         <CardFooter divider className="flex items-center justify-between py-3">
-                        <Input type={'number'} value={ammount} placeholder='Set Ammount' onChange={handleChange} />
-                        <Button onClick={handleAddFavourite}>{fav ? <span>Update</span> : <span>Add</span>}</Button>
+                            <Input type={'number'} value={ammount} placeholder='Set Ammount' onChange={handleChange} />
+                            <Button onClick={handleAddFavourite}>{fav ? <span>Update</span> : <span>Add</span>}</Button>
                         </CardFooter>
                     </Card>
-                    </div>
+                </div>
                 : null}
     </div>
 }
