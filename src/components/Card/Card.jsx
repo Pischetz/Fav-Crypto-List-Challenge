@@ -9,7 +9,7 @@ export default function Card({coin, chain}){
         <a href={`/info${chain}/${coin.ticker}`}>
         <div className="h-[35px] flex items-center hover:bg-gray-200 hover:text-gray-900">
             <Image src={coin.logo} width='20px' height='20px' className="rounded-full" />
-            {coin.coin}
+            <span className="ml-2">{coin.coin}</span>
         </div>
         </a>
         </Link>

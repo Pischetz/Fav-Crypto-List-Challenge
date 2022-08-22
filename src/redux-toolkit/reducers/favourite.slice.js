@@ -28,11 +28,8 @@ const favouritesReducer = createSlice({
         },
         refreshFavourite(state, action){
             let favRefreshed = state.favourites.find(crypto => crypto.coin === action.payload.coin && crypto.chain === action.payload.chain )
-            favRefreshed = {
-                ...favRefreshed,
-                lastRefresh: new Date().getTime(),
-                prices: action.payload.prices
-            }
+            favRefreshed.lastRefresh = new Date().getTime()
+            favRefreshed.prices = action.payload.prices
             localStorage.setItem('favs', JSON.stringify(state.favourites))
         },
         setFavourites(state,action){
@@ -48,6 +45,7 @@ export const {
     addFavourite,
     removeFavourite,
     updateFavourite,
+    refreshFavourite,
     setFavourites,
     setCurrency
 } = favouritesReducer.actions

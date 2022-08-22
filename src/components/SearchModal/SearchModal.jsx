@@ -130,7 +130,7 @@ export default function SearchModal(props) {
           </div>
         </DialogBody>
         <DialogBody >
-          {loading ? <LoadingSpinner /> : <CardHolder cryptoList={sendList(selectedList)} chain={sendChain(selectedList)} search={search} />}
+          {loading ? <div className="h-[200px] w-full flex items-center justify-center"><LoadingSpinner /></div> : <CardHolder cryptoList={sendList(selectedList)} chain={sendChain(selectedList)} search={search} />}
         </DialogBody>
       </Dialog>
     </Fragment>

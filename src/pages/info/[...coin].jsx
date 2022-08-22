@@ -112,10 +112,10 @@ export default function Info() {
     }
 
     return <div>
-        {loading ? <LoadingSpinner /> :
+        {loading ? <div className="flex items-center justify-center"><LoadingSpinner /> </div>:
             cryptoInfo.coin ?
-                <>
-                    <Card className="w-96 m-auto">
+                <div className="flex items-center justify-center m-auto ">
+                    <Card className="w-96 m-auto ">
                         <CardHeader color="cyan" className="relative h-56 m-0 flex">
                             <div className="h-40 aspect-square m-auto">
                                 <img src={cryptoInfo.logo} className='w-full h-full rounded-full'/>
@@ -134,8 +134,7 @@ export default function Info() {
                         <Button onClick={handleAddFavourite}>{fav ? <span>Update</span> : <span>Add</span>}</Button>
                         </CardFooter>
                     </Card>
-
-                </>
+                    </div>
                 : <div>componente de moneda no encontrada</div>}
     </div>
 }
