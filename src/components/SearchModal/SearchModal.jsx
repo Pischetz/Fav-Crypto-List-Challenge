@@ -35,8 +35,6 @@ export default function SearchModal(props) {
     }
     if (localStorage.getItem('selectedList') !== 'currencies') {
       dispatch(selectList(localStorage.getItem('selectedList')))
-    }else if(!localStorage.getItem('selectedList')){
-      dispatch(selectList('currencies'))
     }
   }, [])
 
@@ -91,7 +89,7 @@ export default function SearchModal(props) {
               <Menu as="div" className="relative inline-block text-left h-full xs:w-full">
                 <div className="h-[39px] flex ">
                   <Menu.Button className="min-w-[100px] inline-flex w-full h-full justify-center ring-1 ring-gray-500 rounded-md bg-opacity-20 text-gray hover:bg-opacity-30 hover:outline-none hover:ring-2 hover:ring-blue-500 focus:ring-opacity-75">
-                    <p className="m-auto">{selectedList}</p>
+                    <p className="m-auto">{selectedList || "currencies"}</p>
                   </Menu.Button>
                 </div>
                 <Transition
