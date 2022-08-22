@@ -24,11 +24,22 @@ export default function FavouriteCard({ crypto }) {
                     </div>
                     </AccordionHeader>
                 <AccordionBody>
-                {crypto.prices[selected]? <p>{crypto.prices[selected]} {selected}</p> : <p>Untracked Price</p>}
-                <p>{crypto.ammount}</p>
-                <p>{new Date(crypto.lastUpdate).toLocaleString()}</p>
-                <p>{new Date(crypto.lastRefresh).toLocaleString()}</p>
-                
+                <div className="flex justify-between">
+                    <span>Price:</span>
+                    {crypto.prices[selected]? <span>{crypto.prices[selected]} {selected}</span> : <span>Untracked Price</span>}
+                </div>
+                <div className="flex justify-between">
+                    <span>Ammount: {crypto.ammount} {crypto.ticker.toUpperCase()}</span>
+                    <span>{crypto.prices[selected]? `~${parseFloat(crypto.prices[selected]) * parseFloat(crypto.ammount)} ${selected}` : 'Unknown'}</span>
+                </div>
+                <div className="flex justify-between">
+                    <span>Last Update</span>
+                    <span>{new Date(crypto.lastUpdate).toLocaleString()}</span>
+                </div>
+                <div className="flex justify-between">
+                    <span>Last Refresh</span>
+                    <span>{new Date(crypto.lastRefresh).toLocaleString()}</span>
+                </div>
                 </AccordionBody>
             </Accordion>            
         </>

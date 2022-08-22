@@ -3,6 +3,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCurrency } from 'redux-toolkit/reducers/favourite.slice'
+import Link from 'next/link'
 
 const currencyes = [
     { name: 'USD' },
@@ -37,12 +38,14 @@ export default function Nav() {
         <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-cyan-500 mb-3">
             <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                 <div className=" relative flex justify-between w-auto static block justify-start">
+                    <Link href={'/'}>
                     <a
                         className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                        href="#pablo"
+                        href="/"
                     >
                         Crypto Fav List
                     </a>
+                    </Link>
                 </div>
                 <div
                     className={

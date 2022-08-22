@@ -80,15 +80,16 @@ export default function SearchModal(props) {
   return (
     <Fragment >
       <Dialog open={showModal} handler={setShowModal} size={"xl"} className='overflow-auto'>
-        <DialogHeader>Search Your Favourite Crypto!</DialogHeader>
+        <DialogHeader className='text-center'>Find your fav Crypto!</DialogHeader>
         <DialogBody>
-          <Input variant="outlined" label="Outlined" value={search} onChange={handleSearch} />
+          <div className="w-full flex xs:flex-col">
+          <Input variant="outlined" label="Search..." value={search} onChange={handleSearch} className='h-[40px] w-full'/>
           <div>
             <div className="w-auto text-right h-full">
-              <Menu as="div" className="relative inline-block text-left h-full">
-                <div className="h-full">
+              <Menu as="div" className="relative inline-block text-left h-full xs:w-full">
+                <div className="h-[39px] flex ">
                   <Menu.Button className="min-w-[100px] inline-flex w-full h-full justify-center ring-1 ring-gray-500 rounded-md bg-opacity-20 text-gray hover:bg-opacity-30 hover:outline-none hover:ring-2 hover:ring-blue-500 focus:ring-opacity-75">
-                    {selectedList}
+                    <p className="m-auto">{selectedList}</p>
                   </Menu.Button>
                 </div>
                 <Transition
@@ -100,7 +101,7 @@ export default function SearchModal(props) {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50">
+                  <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none z-50 xs:w-full">
                       <Menu.Item>
                         <button onClick={handleButtons} className={`text-gray-900 group flex w-full items-center rounded-md px-2 py-2 text-sm`} value="currencies">
                         CryptoCurrencies
@@ -125,6 +126,7 @@ export default function SearchModal(props) {
                 </Transition>
               </Menu>
             </div>
+          </div>
           </div>
         </DialogBody>
         <DialogBody >
