@@ -116,8 +116,8 @@ export default function Info() {
             cryptoInfo.coin ?
                 <>
                     <Card className="w-96 m-auto">
-                        <CardHeader color="cyan" className="relative h-56 m-0">
-                            <div className="h-full aspect-square m-auto">
+                        <CardHeader color="cyan" className="relative h-56 m-0 flex">
+                            <div className="h-40 aspect-square m-auto">
                                 <img src={cryptoInfo.logo} className='w-full h-full rounded-full'/>
                             </div>
                         </CardHeader>
