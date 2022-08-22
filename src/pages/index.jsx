@@ -1,4 +1,4 @@
-import { Button, Card, IconButton, CardHeader, CardBody, CardFooter, Typography} from "@material-tailwind/react"
+import { Button, Card, IconButton, CardHeader, CardBody, CardFooter, Typography, Input} from "@material-tailwind/react"
 
 import FavouriteCard from "components/FavouriteCard/FavouriteCard";
 import SearchModal from "components/SearchModal/SearchModal"
@@ -28,7 +28,7 @@ export default function Home() {
       <Card className="w-[400px] m-auto">
       <CardHeader
         variant="gradient"
-        color="blue"
+        color="cyan"
         className="mb-4 grid h-12 place-items-center"
         floated={false}
       >
@@ -37,7 +37,7 @@ export default function Home() {
           Your Favs!
         </Typography>
         <div>
-        <IconButton onClick={() => { setShowModal(!showModal)}} variant='gradient' className="rounded-full h-8 w-8 ">
+        <IconButton onClick={() => { setShowModal(!showModal)}} color='cyan' variant='gradient' className="rounded-full h-8 w-8 ">
         <AiOutlinePlus color="white"/>
         </IconButton>
         </div>

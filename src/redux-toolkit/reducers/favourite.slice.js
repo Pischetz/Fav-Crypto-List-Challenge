@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    favourites: []
+    favourites: [],
+    currency: 'USD'
 }
 
 const favouritesReducer = createSlice({
@@ -36,6 +37,9 @@ const favouritesReducer = createSlice({
         },
         setFavourites(state,action){
             state.favourites = action.payload
+        },
+        setCurrency(state, action){
+            state.currency = action.payload
         }
     }
 })
@@ -44,7 +48,8 @@ export const {
     addFavourite,
     removeFavourite,
     updateFavourite,
-    setFavourites
+    setFavourites,
+    setCurrency
 } = favouritesReducer.actions
 
 export default favouritesReducer.reducer

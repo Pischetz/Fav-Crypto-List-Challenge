@@ -21,7 +21,7 @@ export default function Info() {
     const { coin } = router.query
     const dispatch = useDispatch()
     const cryptoInfo = useSelector(store => store.cryptoInfo.info)
-    const favourites = useSelector(store => store.favourites.favourites)
+    const {favourites, currency} = useSelector(store => store.favourites)
     const [loading, setLoading] = useState(false)
     const [fav, setFav] = useState(false)
     const [ammount, setAmmount] = useState(0)
@@ -126,9 +126,7 @@ export default function Info() {
                             {cryptoInfo.coin}
                             </Typography>
                             <Typography>
-                                The place is close to Barceloneta Beach and bus stop just 2 min by
-                                walk and near to "Naviglio" where you can enjoy the main night life in
-                                Barcelona.
+                            {cryptoInfo.prices[currency]? <>{cryptoInfo.prices[currency]} {currency}</> : <>Untracked Price</>}
                             </Typography>
                         </CardBody>
                         <CardFooter divider className="flex items-center justify-between py-3">
