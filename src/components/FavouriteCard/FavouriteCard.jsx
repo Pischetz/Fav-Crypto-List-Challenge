@@ -1,4 +1,4 @@
-import { Accordion, AccordionBody, AccordionHeader, Button, IconButton } from "@material-tailwind/react"
+import { Accordion, AccordionBody, AccordionHeader, IconButton } from "@material-tailwind/react"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { removeFavourite } from "redux-toolkit/reducers/favourite.slice"

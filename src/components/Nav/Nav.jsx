@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setCurrency } from 'redux-toolkit/reducers/favourite.slice'
 import Link from 'next/link'
 
-const currencyes = [
+const currencies = [
     { name: 'USD' },
     { name: 'EUR' },
     { name: 'GBP' },
@@ -21,30 +21,30 @@ export default function Nav() {
     const dispatch = useDispatch()
 
     const setSelected = (e) => {
-        if(selected !== e){
+        if (selected !== e) {
             dispatch(setCurrency(e))
             localStorage.setItem('currency', e)
         }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         const selected = localStorage.getItem('currency')
-        if(selected){
+        if (selected) {
             dispatch(setCurrency(selected))
         }
-    },[])
+    }, [])
 
     return (
         <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-cyan-500 mb-3">
             <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                 <div className=" relative flex justify-between w-auto static block justify-start">
                     <Link href={'/'}>
-                    <a
-                        className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                        href="/"
-                    >
-                        Crypto Fav List
-                    </a>
+                        <a
+                            className="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+                            href="/"
+                        >
+                            Crypto Fav List
+                        </a>
                     </Link>
                 </div>
                 <div
@@ -70,7 +70,7 @@ export default function Nav() {
                                 leaveTo="opacity-0"
                             >
                                 <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm w-auto z-50">
-                                    {currencyes.map((currency, currencyIdx) => (
+                                    {currencies.map((currency, currencyIdx) => (
                                         <Listbox.Option
                                             key={currencyIdx}
                                             className={({ active }) =>

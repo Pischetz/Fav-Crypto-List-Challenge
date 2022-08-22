@@ -1,4 +1,4 @@
-import { Button, Card, IconButton, CardHeader, CardBody, CardFooter, Typography, Input } from "@material-tailwind/react"
+import { Card, IconButton, CardHeader, CardBody, Typography } from "@material-tailwind/react"
 
 import FavouriteCard from "components/FavouriteCard/FavouriteCard";
 import SearchModal from "components/SearchModal/SearchModal"

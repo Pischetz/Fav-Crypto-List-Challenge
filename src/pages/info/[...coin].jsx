@@ -46,17 +46,17 @@ export default function Info() {
     }, [coin])
 
     useEffect(() => {
+        function checkFav(chain){
+            let isFav = favourites.find(crypto => crypto.coin === cryptoInfo.coin && crypto.chain === chain)
+                if (isFav) {
+                    setFav(true)
+                }
+        }
         if (cryptoInfo.coin) {
             if (coin.length === 2) {
-                let isFav = favourites.find(crypto => crypto.coin === cryptoInfo.coin && crypto.chain === coin[0])
-                if (isFav) {
-                    setFav(true)
-                }
+                checkFav(coin[0])
             } else {
-                let isFav = favourites.find(crypto => crypto.coin === cryptoInfo.coin && crypto.chain === '')
-                if (isFav) {
-                    setFav(true)
-                }
+                checkFav('')
             }
         }
     }, [cryptoInfo])
@@ -135,6 +135,6 @@ export default function Info() {
                         </CardFooter>
                     </Card>
                     </div>
-                : <div>componente de moneda no encontrada</div>}
+                : null}
     </div>
 }

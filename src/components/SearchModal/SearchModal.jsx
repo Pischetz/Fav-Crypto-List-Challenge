@@ -1,15 +1,11 @@
-import { useEffect, useRef, Fragment, useState } from "react"
+import { useEffect, Fragment, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getCryptos } from "redux-toolkit/actions/cryptoListsActions"
 import { selectList } from "redux-toolkit/reducers/cryptoList.slice"
 import {
-  Button,
   Dialog,
   DialogHeader,
   DialogBody,
-  DialogFooter,
-  Select,
-  Option,
   Input,
 } from "@material-tailwind/react";
 import CardHolder from "components/CardHolder/CardHolder";
