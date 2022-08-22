@@ -35,6 +35,8 @@ export default function SearchModal(props) {
     }
     if (localStorage.getItem('selectedList') !== 'currencies') {
       dispatch(selectList(localStorage.getItem('selectedList')))
+    }else if(!localStorage.getItem('selectedList')){
+      dispatch(selectList('currencies'))
     }
   }, [])
 
